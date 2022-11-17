@@ -11,6 +11,7 @@ import 'package:surah_munjiat_v2/Screen/Munjiat/munjiat_screen.dart';
 import 'package:surah_munjiat_v2/Screen/Qiblat/qiblah_screen.dart';
 import 'package:surah_munjiat_v2/Screen/Surah/surah_screen.dart';
 import 'package:surah_munjiat_v2/Screen/Tasbih/tasbih_screen.dart';
+import 'package:surah_munjiat_v2/Screen/WaktuSolat/waktu_solat_screen.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -106,7 +107,9 @@ class _HomepageState extends State<Homepage> {
                       ),
                       btn(
                         title: 'Waktu Solat',
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(() => const WaktuSolatScreen());
+                        },
                       ),
                       btn(
                         title: 'Tasbih',

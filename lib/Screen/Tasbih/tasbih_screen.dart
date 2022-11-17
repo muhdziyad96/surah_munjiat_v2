@@ -40,7 +40,6 @@ class _TasbihScreenState extends State<TasbihScreen> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   void activateSpeechRecognizer() {
-    print('_MyAppState.activateSpeechRecognizer... ');
     _speech = SpeechRecognition();
     _speech.setAvailabilityHandler(onSpeechAvailability);
     _speech.setRecognitionStartedHandler(onRecognitionStarted);
@@ -132,23 +131,13 @@ class _TasbihScreenState extends State<TasbihScreen> {
               style: const TextStyle(color: Colors.white),
             ),
           ));
-  Widget _countButton({required String label, VoidCallback? onPressed}) =>
-      Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: ElevatedButton(
-            onPressed: onPressed,
-            child: Text(
-              label,
-              style: const TextStyle(color: Colors.green),
-            ),
-          ));
 
   void start() => _speech.activate(selectedLang.code).then((_) {
         return _speech.listen().then((result) {
-          print('_MyAppState.start => result $result');
+          // print('_MyAppState.start => result $result');
           setState(() {
             _isListening = result;
-            print(result);
+            // print(result);
           });
         });
       });
@@ -169,7 +158,7 @@ class _TasbihScreenState extends State<TasbihScreen> {
       setState(() => _speechRecognitionAvailable = result);
 
   void onCurrentLocale(String locale) {
-    print('_MyAppState.onCurrentLocale... $locale');
+    // print('_MyAppState.onCurrentLocale... $locale');
     setState(
         () => selectedLang = languages.firstWhere((l) => l.code == locale));
   }
@@ -179,7 +168,7 @@ class _TasbihScreenState extends State<TasbihScreen> {
   }
 
   void onRecognitionResult(String text) {
-    print('_MyAppState.onRecognitionResult... $text');
+    // print('_MyAppState.onRecognitionResult... $text');
     setState(() => transcription = text);
     final List s = text.split('سبحان الله');
     final List al = text.split('الحمد لله');
